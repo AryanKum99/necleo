@@ -6,7 +6,7 @@ const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
 const axios = require('axios');
 const projModel = require('./models/projModel');
-
+const projRoutes = require('./routes/projectRoute');
 require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 mongoose.connect(process.env.db_url, {
     useNewUrlParser: true, useUnifiedTopology: true
@@ -29,20 +29,5 @@ app.get('/', async (req, res) => {
     res.render('home', { resp });
 })
 
-app.get('/api/new', (req, res) => {
-    res.render('create');
-})
-
-app.post('/api/new', async (req, res) => {
-    const project = new projModel(req.body);
-    await project.save();
-    res.redirect('/');
-})
-
-app.delete('/api/:id', async (req, res) => {
-    const projectId = req.params.id;
-    await projModel.findOneAndDelete({ _id: projectId });
-    console.log('deleted');
-    res.redirect('/');
-})
+app.use('/api', projRoutes);
 module.exports = app;
