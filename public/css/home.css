@@ -37,6 +37,7 @@
     flex-direction: column;
     margin: 0 auto;
     padding: 16px 19px 27px;
+    height: 100%;
 }
 
 .img {
@@ -221,7 +222,7 @@
     align-self: start;
     display: flex;
     gap: 10px;
-    margin: 511px 0 0 13px;
+    margin: 230px 0 0 13px;
 }
 
 @media (max-width: 991px) {

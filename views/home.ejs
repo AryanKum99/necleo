@@ -6,6 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/home.css">
     <title>Necleo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            gap: 20px;
+            /* Adjust the gap as needed */
+        }
+
+        .box {
+            width: 360px;
+            height: 184px;
+            background-color: #fff;
+            color: #fff;
+            text-align: center;
+            line-height: 100px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,13 +64,14 @@
                         <img loading="lazy"
                             src="https://cdn.builder.io/api/v1/image/assets/TEMP/953f173d17d02a83189b0b638b697e35f61261a02520323749ab65a1572b908a?"
                             class="img-6" />
-                        <div class="div-9">Apps</div>
+                        <div class="div-9"><a href="/" style="color: #c4c4c4; text-decoration: none;">Apps</a></div>
                     </div>
                     <div class="div-10">
                         <img loading="lazy"
                             src="https://cdn.builder.io/api/v1/image/assets/TEMP/c6d818a76fd05d19d25c3e531f33ece40a32ca320ca623d511e046ef8e1709d4?"
                             class="img-7" />
-                        <div class="div-11">Intro to Necleo</div>
+                        <div class="div-11"><a href="/" style="color: #c4c4c4; text-decoration: none;">Intro to
+                                Necleo</a></div>
                     </div>
                     <div class="div-12">
                         <img loading="lazy"
@@ -62,7 +89,10 @@
                         <img loading="lazy"
                             src="https://cdn.builder.io/api/v1/image/assets/TEMP/5341d44fe39d3591d46fbfdc0963e267533db8cca0a3cccfe49fb355c6d39259?"
                             class="img-10" />
-                        <div class="div-17">Collapse</div>
+                        <button style="background: none; border: none;">
+                            <div class="div-17">Collapse</div>
+                        </button>
+
                     </div>
                 </div>
             </div>
@@ -86,7 +116,7 @@
                                 class="img-12" />
                         </div>
                     </div>
-                    <div class="div-28">
+                    <div class="div-28" style="display: flex; flex-wrap: nowrap; ">
                         <div class="div-29">My Projects</div>
                         <div class="div-30">
                             <div class="div-31">
@@ -94,29 +124,33 @@
                                     src="https://cdn.builder.io/api/v1/image/assets/TEMP/f2474a0c86536f4ebf436679c05538a6d31a60c067eacf628c9ec174161ce5dd?"
                                     class="img-13" />
                             </div>
-                            <div class="div-32">Create a new project</div>
+                            <div class="div-32"><a href="/api/new">Create a new project</a></div>
                             <div class="div-33">
                                 or try a
                                 <span style="color: rgba(250, 120, 47, 1)">sample project</span>
                             </div>
                         </div>
+
+                        <div class="container">
+                            <div class="div-28">
+                                <% resp.forEach(response=> {%>
+                                    <% var url=response.imageUrl ; var newUrl=url.replace("/5000/3333", "/360/184" ); %>
+                                        <div class="box" style="background-image: url(' <%=newUrl %>');">
+                                        </div>
+                                        <div style="margin-bottom: 20px; font-size: medium ;">Author: <%=
+                                                response.authorName%>
+                                        </div>
+                                        <form class="d-inline" action="/api/<%=response._id%>?_method=DELETE"
+                                            method="POST">
+                                            <button style="margin-bottom: 30px;" class="btn btn-danger">Delete</button>
+                                        </form>
+                                        <%}); %>
+                            </div>
+                        </div>
                     </div>
-                    <div class="div-28">
-                        <% resp.forEach(response=> {%>
-                            <% var url=response.download_url ; var newUrl=url.replace('/5000/3333', "/360/184" );
-                                console.log(newUrl)%>
-                                <div class="div-31" style="background-image: url(' <%=newUrl %>');">
-                                </div>
-                                <div class="div-32"></div>
-                                <div class="div-33">
-                                    <span style="color: rgba(250, 120, 47, 1)"></span>
-                                </div>
-                    </div>
-                    <%}); %>
                 </div>
             </div>
         </div>
-    </div>
 
 </body>
 

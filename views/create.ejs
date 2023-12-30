@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Project</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <form id="contact" action="/api/new" method="post">
+            <h3>Create a new Project</h3>
+            <fieldset>
+                <input placeholder="Your name" type="text" name="authorName" tabindex="1" required autofocus>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Project Name" name="projectName" type="text" required></input>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Image Url" type="url" name="imageUrl" required>
+            </fieldset>
+            <fieldset>
+                <button type="submit" id="contact-submit">Submit</button>
+            </fieldset>
+            <p class="back-button"><a href="/">Go Back?</a></p>
+        </form>
+    </div>
+</body>
+
+</html>

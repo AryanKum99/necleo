@@ -3,7 +3,6 @@ const path = require('path');
 const axios = require('axios');
 const projModel = require('../models/projModel');
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
-console.log(process.env.db_url);
 mongoose.connect(process.env.db_url, {
     useNewUrlParser: true, useUnifiedTopology: true
 });
